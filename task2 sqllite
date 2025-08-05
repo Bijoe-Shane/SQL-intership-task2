@@ -1,0 +1,44 @@
+CREATE TABLE employees (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT,
+    salary REAL DEFAULT 30000,
+    department TEXT
+);
+INSERT INTO employees (id, name, email, salary, department)
+VALUES
+  (1, 'Frank', 'frank@example.com', 42000, 'IT'),
+  (2, 'Grace', NULL, 39000, 'Operations'),
+  (3, 'Helen', 'helen@example.com', 46000, 'Finance'),
+  (4, 'Ivan', NULL, NULL, 'Logistics'),
+  (5, 'Jack', 'jack@example.com', 44000, 'HR');
+
+INSERT INTO employees (id, name, email, salary, department)
+VALUES
+  (6, 'Kiran', 'kiran@example.com', 52000, 'Marketing'),
+  (7, 'Ravi', NULL, NULL, 'Finance'),
+  (8, 'Meena', 'meena@example.com', 48000, NULL),
+  (9, 'Anita', NULL, 45000, 'Sales'),
+  (10, 'Rakesh', 'rakesh@example.com', NULL, 'Operations');
+  
+
+UPDATE employees
+SET department = 'Support'
+WHERE name IN ('Grace', 'Ivan');
+
+UPDATE employees
+SET salary = salary + 5000
+WHERE name IN ('Helen', 'Jack');
+
+UPDATE employees
+SET email = 'unknown@example.com' WHERE email IS NULL;
+
+DELETE FROM employees
+WHERE id = 4;
+
+SELECT * FROM employees;
+
+UPDATE employees SET salary = 30000 WHERE salary IS NULL;
+UPDATE employees SET department = 'General' WHERE department IS NULL;
+
+SELECT * FROM employees WHERE email IS NULL OR salary IS NULL OR department IS NULL;
